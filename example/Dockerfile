@@ -3,7 +3,7 @@ ARG BUILD_FROM=influxdata/influxdb3-ui:1.6.3
 FROM ${BUILD_FROM}
 
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
 # Build arguments
 ARG BUILD_ARCH
