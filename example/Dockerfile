@@ -2,8 +2,8 @@ ARG BUILD_FROM=influxdata/influxdb3-ui:1.6.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Build arguments
 ARG BUILD_ARCH
@@ -42,6 +42,9 @@ RUN apk add --no-cache \
     && curl -L -s -o /usr/bin/tempio \
         "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/tempio
+
+# Copy root filesystem
+COPY rootfs /
 
 # Labels
     LABEL \
