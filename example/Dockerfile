@@ -18,30 +18,55 @@ ARG S6_OVERLAY_VERSION="3.2.2.0"
 ARG TEMPIO_VERSION="2024.11.2"
 
 # Setup base
-RUN apk add --no-cache \
-    coreutils=9.8-r1 \
-    wget=1.25.0-r2\
+RUN \
+    apk add --no-cache --virtual .build-dependencies \
+        tar=1.35-r4 \
+        xz=5.8.2-r0 \
+    \
+    && apk add --no-cache \
+        libcrypto3=3.5.5-r0 \
+        libssl3=3.5.5-r0 \
+        musl-utils=1.2.5-r21 \
+        musl=1.2.5-r21 \
+    \
+    && apk add --no-cache \
+        bash=5.3.3-r1 \
+        curl=8.17.0-r1 \
+        jq=1.8.1-r0 \
+        tzdata=2025c-r0 \
+    \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then S6_ARCH="x86_64"; fi \
+    \
     && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" \
         | tar -C / -Jxpf - \
+    \
     && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${S6_ARCH}.tar.xz" \
         | tar -C / -Jxpf - \
+    \
     && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-symlinks-noarch.tar.xz" \
         | tar -C / -Jxpf - \
+    \
     && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-symlinks-arch.tar.xz" \
         | tar -C / -Jxpf - \
+    \
     && curl -J -L -o /tmp/bashio.tar.gz \
         "https://github.com/hassio-addons/bashio/archive/${BASHIO_VERSION}.tar.gz" \
     && mkdir /tmp/bashio \
     && tar zxvf \
         /tmp/bashio.tar.gz \
         --strip 1 -C /tmp/bashio \
+    \
     && mv /tmp/bashio/lib /usr/lib/bashio \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
+    \
     && curl -L -s -o /usr/bin/tempio \
         "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}" \
-    && chmod a+x /usr/bin/tempio
+    && chmod a+x /usr/bin/tempio \
+    \
+    && apk del --no-cache --purge .build-dependencies \
+    && rm -f -r \
+        /tmp/*
 
 # Copy root filesystem
 COPY rootfs /
