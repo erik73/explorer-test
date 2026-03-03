@@ -34,7 +34,7 @@ else
     fi
 fi
 
-MODE="query"
+MODE="admin"
 
 for arg in "$@"; do
   case "$arg" in
