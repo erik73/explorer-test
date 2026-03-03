@@ -66,6 +66,7 @@ RUN \
     \
     && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
+        /app-root/entrypoint.sh \
         /tmp/*
 
 # Copy root filesystem
