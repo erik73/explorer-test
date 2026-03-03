@@ -18,9 +18,10 @@ ARG S6_OVERLAY_VERSION="3.2.2.0"
 ARG TEMPIO_VERSION="2024.11.2"
 
 # Setup base
-RUN apk add --no-cache \
-    coreutils=9.8-r1 \
-    wget=1.25.0-r2\
+RUN set -o pipefail \
+    && apk add --no-cache \
+        coreutils=9.8-r1 \
+        wget=1.25.0-r2\
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then S6_ARCH="x86_64"; fi \
     && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" \
