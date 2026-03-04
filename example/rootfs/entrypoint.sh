@@ -48,15 +48,15 @@ MODE="admin"
 #  esac
 #done
 
-if [ "$MODE" = "query" ]; then
-  RESTRICTED=true
-else
-  RESTRICTED=false
-fi
+#if [ "$MODE" = "query" ]; then
+#  RESTRICTED=true
+#else
+#  RESTRICTED=false
+#fi
 
 cat <<EOF > /app-root/_master_app/assets/_.js
 Object.defineProperty(window, "restricted", {
-  value: $RESTRICTED,
+  value: false,
   writable: false,
   configurable: false,
 });
