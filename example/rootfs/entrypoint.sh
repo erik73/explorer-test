@@ -7,7 +7,7 @@ cp -n /db/sqlite.db /data/db/sqlite.db
 #    echo "SESSION_SECRET_KEY not found, generating random key..."
 #    SESSION_SECRET_KEY=$(openssl rand -hex 32)
 DATABASE_URL=/data/db/sqlite.db
-SESSION_SECRET_KEY="ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4"
+SESSION_SECRET_KEY=ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4
 #    echo "Generated SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:0:8}..."
 #else
 echo "Using existing SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:0:8}..."
