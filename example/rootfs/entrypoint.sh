@@ -36,17 +36,17 @@ fi
 
 MODE="admin"
 
-for arg in "$@"; do
-  case "$arg" in
-    --mode=*)
-      MODE="${arg#*=}"
-      ;;
-    *)
-      echo "Unknown option: $arg"
-      exit 1
-      ;;
-  esac
-done
+#for arg in "$@"; do
+#  case "$arg" in
+#    --mode=*)
+#      MODE="${arg#*=}"
+#      ;;
+#    *)
+#      echo "Unknown option: $arg"
+#      exit 1
+#      ;;
+#  esac
+#done
 
 if [ "$MODE" = "query" ]; then
   RESTRICTED=true
