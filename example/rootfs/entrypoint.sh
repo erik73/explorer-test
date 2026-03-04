@@ -34,7 +34,7 @@ else
     fi
 fi
 
-#MODE="admin"
+MODE="admin"
 
 #for arg in "$@"; do
 #  case "$arg" in
@@ -48,15 +48,15 @@ fi
 #  esac
 #done
 
-#if [ "$MODE" = "query" ]; then
-#  RESTRICTED=true
-#else
-#  RESTRICTED=false
-#fi
+if [ "$MODE" = "query" ]; then
+  RESTRICTED=true
+else
+  RESTRICTED=false
+fi
 
 cat <<EOF > /app-root/_master_app/assets/_.js
 Object.defineProperty(window, "restricted", {
-  value: false,
+  value: $RESTRICTED,
   writable: false,
   configurable: false,
 });
