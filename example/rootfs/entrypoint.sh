@@ -1,5 +1,6 @@
 #!/bin/sh
 # shellcheck disable=SC2181
+mkdir -p /data/db
 cp -n /db/sqlite.db /data/db/sqlite.db
 
 #if [ -z "$SESSION_SECRET_KEY" ]; then
