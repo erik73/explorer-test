@@ -6,7 +6,7 @@ cp -n /db/sqlite.db /data/db/sqlite.db
 #if [ -z "$SESSION_SECRET_KEY" ]; then
 #    echo "SESSION_SECRET_KEY not found, generating random key..."
 #    SESSION_SECRET_KEY=$(openssl rand -hex 32)
-DATABASE_URL="/data/db/sqlite.db"
+DATABASE_URL=/data/db/sqlite.db
 SESSION_SECRET_KEY="ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4"
 #    echo "Generated SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:0:8}..."
 #else
@@ -91,7 +91,7 @@ echo "DATABASE_URL: $DATABASE_URL"
 echo "SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:0:8}..."
 echo "NODE_EXTRA_CA_CERTS: $NODE_EXTRA_CA_CERTS"
 
-export DATABASE_URL="/data/db/sqlite.db"
+export DATABASE_URL="$DATABASE_URL"
 export SESSION_SECRET_KEY="$SESSION_SECRET_KEY"
 export NODE_ENV="$NODE_ENV"
 if [ -n "$NODE_EXTRA_CA_CERTS" ]; then
