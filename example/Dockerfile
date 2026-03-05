@@ -19,6 +19,7 @@ ARG TEMPIO_VERSION="2024.11.2"
 
 ENV DATABASE_URL=/data/db/sqlite.db
 ENV SESSION_SECRET_KEY=ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4
+ENV MODE=admin
 
 # Copy root filesystem
 COPY rootfs /

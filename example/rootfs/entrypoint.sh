@@ -34,7 +34,7 @@ else
     fi
 fi
 
-MODE="admin"
+# MODE="admin"
 
 #for arg in "$@"; do
 #  case "$arg" in
@@ -43,7 +43,7 @@ MODE="admin"
 #      ;;
 #    *)
 #      echo "Unknown option: $arg"
-#      exit 1
+#g      exit 1
 #      ;;
 #  esac
 #done
