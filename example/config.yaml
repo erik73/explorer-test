@@ -8,6 +8,8 @@ init: false
 arch:
   - aarch64
   - amd64
+ingress: true
+ingress_stream: true
 ports:
   80/tcp: 8888
 ports_description:
