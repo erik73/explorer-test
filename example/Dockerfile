@@ -27,12 +27,12 @@ ENV \
 RUN \
     set -o pipefail \
     \
-    && apk add --no-cache \
-        curl=8.17.0-r1 \
-    \
     && apk add --no-cache --virtual .build-dependencies \
         tar=1.35-r4 \
         xz=5.8.2-r0 \
+    \
+    && apk add --no-cache \
+        curl=8.17.0-r1 \
     \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then S6_ARCH="x86_64"; fi \
@@ -74,7 +74,7 @@ COPY rootfs /
 COPY s6-overlay /package/admin/s6-overlay-${S6_OVERLAY_VERSION}/
 
 # Entrypoint & CMD
-ENTRYPOINT ["/init"]
+# ENTRYPOINT ["/init"]
 
 # Labels
     LABEL \
