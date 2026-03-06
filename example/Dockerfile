@@ -61,6 +61,12 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
+# Copy s6-overlay adjustments
+COPY s6-overlay /package/admin/s6-overlay-${S6_OVERLAY_VERSION}/
+
+# Entrypoint & CMD
+ENTRYPOINT ["/init"]
+
 # Labels
     LABEL \
     io.hass.name="${BUILD_NAME}" \
