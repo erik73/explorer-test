@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant App: InfluxDB 3 Explorer
+# Start and setup InfluxDB 3 Explorer
+# ==============================================================================
+
+bashio::log.info "Configuring app"
+
 # shellcheck disable=SC2181
 #mkdir -p /data/db
 #cp -n /db/sqlite.db /data/db/sqlite.db
