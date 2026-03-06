@@ -23,6 +23,9 @@ ENV SESSION_SECRET_KEY=ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb2
 RUN \
     set -o pipefail \
     \
+    && apk add --no-cache \
+        curl=8.17.0-r1 \
+    \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then S6_ARCH="x86_64"; fi \
     \
