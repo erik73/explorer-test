@@ -17,10 +17,18 @@ ARG BASHIO_VERSION="v0.17.5"
 ARG S6_OVERLAY_VERSION="3.2.2.0"
 ARG TEMPIO_VERSION="2024.11.2"
 
-ENV DATABASE_URL=/data/db/sqlite.db
-ENV SESSION_SECRET_KEY=ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4
+ENV \
+    DATABASE_URL=/data/db/sqlite.db \
+    SESSION_SECRET_KEY=ab9ed71fa7dbe51b6074db998c89212c06aeb18ed313113175b8e5bb25d417e4 \
+    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
+    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0 \
+    S6_CMD_WAIT_FOR_SERVICES=1
 
 RUN \
+    && apk add --no-cache --virtual .build-dependencies \
+        tar=1.35-r4 \
+        xz=5.8.2-r0 \
+    \
     set -o pipefail \
     \
     && apk add --no-cache \
@@ -55,6 +63,7 @@ RUN \
         "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/tempio \
     \
+    && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
         /tmp/*
 
