@@ -71,7 +71,8 @@ RUN \
     \
     && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
-        /tmp/*
+        /tmp/* \
+        /etc/nginx
 
 # Copy root filesystem
 COPY rootfs /
