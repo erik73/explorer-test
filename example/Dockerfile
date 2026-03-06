@@ -36,6 +36,7 @@ RUN \
     && apk add --no-cache \
         curl=8.17.0-r1 \
         bash=5.3.3-r1 \
+        jq=1.8.1-r0 \
     \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then S6_ARCH="x86_64"; fi \
