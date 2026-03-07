@@ -1,0 +1,9 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant App: InfluxDB3 Explorer
+# Runs the node daemon
+# ==============================================================================
+
+bashio::log.info "Starting Node...."
+
+exec node app-root/_backend_app/main.js

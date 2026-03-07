@@ -1,0 +1,12 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant App: InfluxDB3 Explorer
+# Runs the Nginx daemon
+# ==============================================================================
+
+# Wait for PHP-FPM to become available
+bashio::net.wait_for 8888
+
+bashio::log.info "Starting NGinx...."
+
+exec nginx
