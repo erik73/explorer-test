@@ -5,6 +5,7 @@
 # ==============================================================================
 
 # Wait for PHP-FPM to become available
+bashio::log.info "Waiting for node socket..."
 bashio::net.wait_for 8888
 
 bashio::log.info "Starting NGinx...."

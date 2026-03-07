@@ -6,4 +6,4 @@
 
 bashio::log.info "Starting Node...."
 
-exec node app-root/_backend_app/main.js
+exec node /app-root/_backend_app/main.js
