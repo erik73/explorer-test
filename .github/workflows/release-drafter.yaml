@@ -13,4 +13,4 @@ permissions:
 
 jobs:
   workflows:
-    uses: hassio-addons/workflows/.github/workflows/release-drafter.yaml@3d5603e6f0966551a0c99493171cc2808349b28e # v2.0.4
+    uses: erik73/workflows/.github/workflows/release-drafter.yaml@0d708a724ff0548b48e5aee5252cb33af09cc6db # v1.0.10
