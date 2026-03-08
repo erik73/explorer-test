@@ -7,7 +7,7 @@
 
 bashio::log.info "Configuring environment variables for Explorer"
 
-export DATABASE_URL=/data/db/sqlite.db \
+export DATABASE_URL=/data/db/sqlite.db
 
 if ! bashio::fs.file_exists "/data/session_secret" ; then
     bashio::log.info "Generating new session secret key..."
