@@ -1,0 +1,16 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community App: InfluxDB 3 Explorer
+# Example init script, runs before any other service
+# ==============================================================================
+
+bashio::log.info "Configuring environment variables for Explorer"
+
+export DATABASE_URL=/data/db/sqlite.db \
+
+if ! bashio::fs.file_exists "/data/session_secret" ; then
+    bashio::log.info "Generating new session secret key..."
+    openssl rand -hex 32 > /data/session_secret
+fi
+export SESSION_SECRET_KEY="$(< /data/session_secret)"
